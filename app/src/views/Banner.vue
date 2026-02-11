@@ -9,8 +9,8 @@
       <p>Last 5★ was featured: {{ lastFeatured ? "Yes" : "No" }}</p>
     </div>
 
-    <button @click="singlepull">Pull 1</button>
-    <button @click="tenpull">Pull 10</button>
+    <img @click="singlepull" src="/download (1).png" alt="" />
+    <img @click="tenpull" src="/2.png" alt="" />
     <button @click="reset">Reset</button>
 
     <div class="results">
