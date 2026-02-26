@@ -18,7 +18,11 @@
   </div>
   <img class="single-pull-button" @click="singlepull" src="/download (1).png" alt="" />
   <img class="ten-pull-button" @click="tenpull" src="/2.png" alt="" />
-  <img class="Yaoguang-banner" src="/Gleam_of_a_Thousand_Plumes_2026-02-13.webp" alt="Yaoguang Banner" />
+  <img
+    class="Yaoguang-banner"
+    src="/Gleam_of_a_Thousand_Plumes_2026-02-13.webp"
+    alt="Yaoguang Banner"
+  />
 </template>
 
 <script setup>
@@ -38,31 +42,27 @@ const standard5star = [
   { name: 'Clara' },
 ]
 
-const featured4star = [
-  { name: 'Pela', },
-  { name: 'Qinque', },
-  { name: 'Hanya', },
-]
+const featured4star = [{ name: 'Pela' }, { name: 'Qinque' }, { name: 'Hanya' }]
 const standard4star = [
-  { name: 'Arlan', },
-  { name: 'Asta', },
-  { name: 'Dan Heng', },
-  { name: 'Sampo', },
-  { name: 'Herta', },
-  { name: 'Gallagher', },
-  { name: 'Misha', },
-  { name: 'Hook', },
-  { name: 'Luka', },
-  { name: 'Lynx', },
-  { name: 'March 7th', },
-  { name: 'Moze', },
-  { name: 'Natasha', },
-  { name: 'Guinaifen', },
-  { name: 'Serval', },
-  { name: 'Susang', },
-  { name: 'Yukong', },
-  { name: 'Tingyun', },
-  { name: 'Xueyi', },
+  { name: 'Arlan' },
+  { name: 'Asta' },
+  { name: 'Dan Heng' },
+  { name: 'Sampo' },
+  { name: 'Herta' },
+  { name: 'Gallagher' },
+  { name: 'Misha' },
+  { name: 'Hook' },
+  { name: 'Luka' },
+  { name: 'Lynx' },
+  { name: 'March 7th' },
+  { name: 'Moze' },
+  { name: 'Natasha' },
+  { name: 'Guinaifen' },
+  { name: 'Serval' },
+  { name: 'Susang' },
+  { name: 'Yukong' },
+  { name: 'Tingyun' },
+  { name: 'Xueyi' },
 ]
 
 const pulls = ref(0)
@@ -94,32 +94,24 @@ function gacha() {
   pulls.value++
   pity5.value++
   pity4.value++
-
-  if (pity5.value >= 90) {
-    pity5.value = 0
-    pity4.value = 0
-    return roll5Star()
+  let chance5 = 0.006;
+  if (pity5.value >= 73) {
+    chance5 += 0.06 * (pity5.value - 74);
   }
-
-  if (pity4.value >= 10) {
-    pity4.value = 0
-    return roll4Star()
+  let chance4 = 0.051;
+  if (pity4.value >= 9) {
+    chance4 = 0.561;
   }
-
-  const r = Math.random()
-
-  if (r < 0.006) {
-    pity5.value = 0
-    pity4.value = 0
-    return roll5Star()
+  const chance = Math.random();
+  if (chance < chance5 || pity5.value >= 90) {
+    pity5.value = 0;
+    return roll5Star();
   }
-
-  if (r < 0.056) {
-    pity4.value = 0
-    return roll4Star()
+  if (chance < (chance5 + chance4) || pity4.value >= 10) {
+    pity4.value = 0;
+    return roll4Star();
   }
-
-  return { name: 'Random Light Cone', rarity: '3★' }
+  return { name: 'Random Light Cone', rarity: '3★' };
 }
 
 function singlepull() {
@@ -162,21 +154,22 @@ function reset() {
   padding: 2rem;
 }
 
-
 .Yaoguang-banner {
-  position: fixed;
+  position: absolute;
   right: 20px;
   top: 60px;
   width: 100%;
   max-width: 1200px;
   border-radius: 12px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 15px rgba(243, 195, 22, 0.2);
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(243, 195, 22, 0.2);
   margin-bottom: 2rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stats {
-  position: fixed;
+  position: absolute;
   left: 20px;
   top: 20px;
   background: var(--glass);
@@ -188,7 +181,7 @@ function reset() {
   gap: 1rem;
   width: 100%;
   max-width: 600px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 2rem;
 }
 
@@ -213,36 +206,32 @@ function reset() {
   margin-bottom: 2rem;
 }
 
-button, .pull-btn {
-  position: fixed;
+button,
+.pull-btn {
+  position: absolute;
   left: 300px;
   top: 140px;
   cursor: pointer;
-  transition: transform 0.1s ease, filter 0.2s;
+  transition:
+    transform 0.1s ease,
+    filter 0.2s;
   border: none;
   color: white;
   background: none;
 }
 .ten-pull-button {
-
-  position: fixed;
-
+  position: absolute;
+  cursor: pointer;
   bottom: 20px;
-
   right: 20px;
-
   max-width: 300px;
 }
 .single-pull-button {
-
-  position: fixed;
-
+  position: absolute;
+  cursor: pointer;
   bottom: 27px;
-
   right: 350px;
-
   max-width: 300px;
-
 }
 .pull-btn:hover {
   filter: brightness(1.2);
@@ -253,9 +242,8 @@ button, .pull-btn {
   transform: scale(0.95);
 }
 
-
 .results {
-  position: fixed;
+  position: absolute;
   left: 10px;
   top: 150px;
   width: 100%;
@@ -270,23 +258,36 @@ button, .pull-btn {
 ul {
   list-style: none;
   padding: 0;
-  
 }
 
 li {
-  
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: 8px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   border-left: 4px solid #475569;
 }
 
-.rarity-5 { border-left-color: var(--gold); color: var(--gold); background: rgba(243, 195, 22, 0.1); }
-.rarity-4 { border-left-color: var(--purple); color: var(--purple); background: rgba(168, 85, 247, 0.1); }
-.rarity-3 { color: #94a3b8; }
-.results::-webkit-scrollbar { width: 6px; }
-.results::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+.rarity-5 {
+  border-left-color: var(--gold);
+  color: var(--gold);
+  background: rgba(243, 195, 22, 0.1);
+}
+.rarity-4 {
+  border-left-color: var(--purple);
+  color: var(--purple);
+  background: rgba(168, 85, 247, 0.1);
+}
+.rarity-3 {
+  color: #94a3b8;
+}
+.results::-webkit-scrollbar {
+  width: 6px;
+}
+.results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
 </style>
