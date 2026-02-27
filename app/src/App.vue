@@ -1,5 +1,7 @@
 <template>
   <div>
+    <RouterLink to="/vue-lists"> Vue Lists </RouterLink>
+
     <RouterView />
   </div>
 </template>

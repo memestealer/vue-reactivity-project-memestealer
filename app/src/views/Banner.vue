@@ -156,8 +156,8 @@ function reset() {
 
 .Yaoguang-banner {
   position: absolute;
-  right: 20px;
-  top: 60px;
+  right: 1%;
+  top: 6%;
   width: 100%;
   max-width: 1200px;
   border-radius: 12px;
@@ -170,8 +170,8 @@ function reset() {
 
 .stats {
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: .6%;
+  top: 3%;
   background: var(--glass);
   backdrop-filter: blur(10px);
   padding: 1.5rem;
@@ -209,7 +209,7 @@ function reset() {
 button,
 .pull-btn {
   position: absolute;
-  left: 300px;
+  left: 20%;
   top: 140px;
   cursor: pointer;
   transition:
