@@ -72,7 +72,7 @@ const lastfeatured = ref(true)
 const results = ref([])
 
 function roll5Star() {
-  const isfeatured = lastfeatured.value === false ? true : Math.random() < 0.5
+  const isfeatured = lastfeatured.value === false ? true : Math.random() < 0.5625
   lastfeatured.value = isfeatured
   return {
     name: isfeatured
@@ -83,7 +83,7 @@ function roll5Star() {
 }
 
 function roll4Star() {
-  const pool = Math.random() < 0.5625 ? featured4star : standard4star
+  const pool = Math.random() < 0.5 ? featured4star : standard4star
   return {
     name: pool[Math.floor(Math.random() * pool.length)].name,
     rarity: '4★',
@@ -95,7 +95,7 @@ function gacha() {
   pity5.value++
   pity4.value++
   let chance5 = 0.006;
-  if (pity5.value >= 73) {
+  if (pity5.value >= 74) {
     chance5 += 0.06 * (pity5.value - 74);
   }
   let chance4 = 0.051;
@@ -209,7 +209,7 @@ function reset() {
 button,
 .pull-btn {
   position: absolute;
-  left: 20%;
+  left: 300px;
   top: 140px;
   cursor: pointer;
   transition:

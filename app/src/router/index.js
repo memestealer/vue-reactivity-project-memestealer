@@ -9,12 +9,12 @@ const router = createRouter({
       name: 'home',
       component: Banner,
     },
-     {
-      path: '/vue-lists',
-      name: 'vue-lists',
-      component: VueLists,
+    {
+     path: '/vue-lists',
+    name: 'vue-lists',
+    component: VueLists,
     },
-     ],
+  ],
 })
 
 export default router
